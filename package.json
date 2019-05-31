@@ -1,0 +1,18 @@
+{
+    "name": "mongo-db-users",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "nodemon --exec 'mocha -R min'"
+    },
+    "author": "Breno Teixeira",
+    "license": "ISC",
+    "devDependencies": {
+        "mocha": "^6.1.4",
+        "nodemon": "^1.19.0"
+    },
+    "dependencies": {
+        "mongoose": "^5.5.6"
+    }
+}

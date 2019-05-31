@@ -1,0 +1,9 @@
+sudo: required
+services:
+    - docker
+
+before_install:
+    - docker build -t brenotx/mongo-db-users -f Dockerfile.dev .
+
+script:
+    - docker run brenotx/mongo-db-users npm run test
