@@ -25,6 +25,14 @@ UserSchema.virtual("postCount").get(function() {
     return this.posts.length;
 });
 
+UserSchema.pre("remove", async function() {
+    const BlogPost = mongoose.model("blogPost");
+
+    // It goes through all BlogPost collections and remove the IDs
+    // which is also inside the user.blogPost list
+    await BlogPost.remove({ _id: { $in: this.blogPosts } });
+});
+
 const User = mongoose.model("user", UserSchema);
 
 module.exports = User;
