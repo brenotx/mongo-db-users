@@ -19,8 +19,15 @@ before(done => {
 });
 
 beforeEach(done => {
-    // This is going to tell mocha that we have finished the asyn drop call.
-    mongoose.connection.collections.users.drop(() => {
-        done();
+    // Use lower case here, mongoose normalize the collections names
+    const { users, comments, blogposts } = mongoose.connection.collections;
+
+    // This is going to tell mocha that we have finished the async drop call.
+    users.drop(() => {
+        comments.drop(() => {
+            blogposts.drop(() => {
+                done();
+            });
+        });
     });
 });
